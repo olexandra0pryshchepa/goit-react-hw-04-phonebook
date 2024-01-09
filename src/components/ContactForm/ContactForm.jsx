@@ -1,61 +1,59 @@
-import React, { Component } from 'react';
-import './ContactForm.css'
+import React, { useState } from 'react';
+import './ContactForm.css';
 
-export default class ContactForm extends Component {
-  state = {
-    name: '',
-    number: '',
-    };
-    
-  handleSubmit = event => {
+const ContactForm = ({ onAdd }) => {
+  const [name, setName] = useState('');
+  const [number, setNumber] = useState('');
+
+  const handleSubmit = event => {
     event.preventDefault();
-    this.props.onAdd(this.state);
+    onAdd({ name, number });
 
-     const emptyFields = {
-       name: '',
-       number: '',
-    };
-    
-     this.setState(emptyFields);
+    setName('');
+    setNumber('');
   };
 
-  handleChange = event => {
+  const handleChange = event => {
     const { name, value } = event.target;
-    this.setState({ [name]: value });
+    if (name === 'name') {
+      setName(value);
+    } else if (name === 'number') {
+      setNumber(value);
+    }
   };
 
-  render() {
-    return (
-      <>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            <p>Name</p>
-            <input
-              type="text"
-              name="name"
-              required
-              pattern="[a-zA-Zа-яА-ЯіІїЇґҐєЄ']+"
-              value={this.state.name}
-              onChange={this.handleChange}
-            />
-          </label>
-          <label>
-            <p>Number</p>
-            <input
-              type="tel"
-              name="number"
-              required
-              pattern="^\+?\d{1,4}[ .\-]?\(?\d{1,3}\)?[ .\-]?\d{1,4}[ .\-]?\d{1,4}[ .\-]?\d{1,9}$"
-              title="Format: XXX-XXX-XX-XX"
-              value={this.state.number}
-              onChange={this.handleChange}
-            />
-          </label>
-          <button className="submit-btn" type="submit">
-            Add contact
-          </button>
-        </form>
-      </>
-    );
-  }
+  return (
+    <>
+      <form onSubmit={handleSubmit}>
+        <label>
+          <p>Name</p>
+          <input
+            type="text"
+            name="name"
+            required
+            pattern="[a-zA-Zа-яА-ЯіІїЇґҐєЄ']+"
+            value={name}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          <p>Number</p>
+          <input
+            type="tel"
+            name="number"
+            required
+            pattern="^\+?\d{1,4}[ .\-]?\(?\d{1,3}\)?[ .\-]?\d{1,4}[ .\-]?\d{1,4}[ .\-]?\d{1,9}$"
+            title="Format: XXX-XXX-XX-XX"
+            value={number}
+            onChange={handleChange}
+          />
+        </label>
+        <button className="submit-btn" type="submit">
+          Add contact
+        </button>
+      </form>
+    </>
+  );
 };
+
+export default ContactForm;
