@@ -1,10 +1,8 @@
-ul {
-    list-style: none;
-}
-li {
+
+.contactItem {
     margin-bottom: 10px;
 }
-.delete-btn{
+.deleteBtn{
     margin-left: 10px;
     color: #ffffff;
     background-color: #db48cd;

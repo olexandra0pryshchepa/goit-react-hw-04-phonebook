@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './ContactForm.css';
+import css from './ContactForm.module.css';
 
 const ContactForm = ({ onAdd }) => {
   const [name, setName] = useState('');
@@ -48,7 +48,7 @@ const ContactForm = ({ onAdd }) => {
             onChange={handleChange}
           />
         </label>
-        <button className="submit-btn" type="submit">
+        <button className={css.submitBtn} type="submit">
           Add contact
         </button>
       </form>

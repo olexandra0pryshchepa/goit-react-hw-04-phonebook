@@ -60,7 +60,7 @@ export const App = () => {
   };
 
   return (
-    <div className="phonebook">
+    <div >
       <h1>Phonebook</h1>
       <ContactForm onAdd={handleAddContact} />
       <h2>Contacts</h2>

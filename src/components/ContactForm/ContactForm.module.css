@@ -1,7 +1,5 @@
-.phonebook{
-    padding-left: 10px;
-}
-.submit-btn{
+
+.submitBtn{
     display: flex;
     margin-top: 10px;
     color: white;
